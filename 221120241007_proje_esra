@@ -1,0 +1,127 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        // Evcil hayvanın ismini ekrana yazdırma
+        Console.WriteLine("Evcil hayvanın ismini giriniz:");
+        string petname = Console.ReadLine();
+
+        // Tansiyon üst sınır ve alt sınırları
+        double altSinir = 130.0;
+        double ustSinir = 150.0;
+
+        // Kullanıcıdan tansiyon değerini alma
+        Console.WriteLine($"{petname}'in tansiyon değerini giriniz:");
+        string tansiyonInput = Console.ReadLine();
+
+        // Tansiyonun string'den double'a dönüştürülmesi
+        double tansiyon;
+
+        // Kullanıcıdan alınan girişin geçerli bir double değeri olup olmadığını kontrol etme
+        if (double.TryParse(tansiyonInput, out tansiyon))
+        {
+            // Tansiyonu ekrana yazdırıyoruz
+            Console.WriteLine($"{petname}'in tansiyonu: {tansiyon}");
+
+            // Tansiyon değeri kontrolü
+            if (tansiyon < altSinir)
+            {
+                Console.WriteLine($"{petname} UYARI! {petname}'in TANSİYONU ÇOK DÜŞÜK!");
+                // Tansiyon düşük olduğunda beep sesi
+                Console.Beep(1000, 500); // 1000 Hz frekansında 500 ms süreyle beep sesi
+            }
+            else if (tansiyon > ustSinir)
+            {
+                Console.WriteLine($"{petname} UYARI! {petname}'in TANSİYONU ÇOK YÜKSEK!");
+                // Tansiyon yüksek olduğunda beep sesi
+                Console.Beep(1500, 500); // 1500 Hz frekansında 500 ms süreyle beep sesi
+            }
+            else
+            {
+                Console.WriteLine($"{petname} Tansiyonu normal.");
+            }
+        }
+        else
+        {
+            // Eğer kullanıcı geçerli bir sayı girmezse
+            Console.WriteLine("Geçersiz bir tansiyon değeri girdiniz. Lütfen geçerli bir sayı girin.");
+        }
+
+        // Yem miktarını ekleyelim
+        Console.WriteLine($"{petname}'in yem miktarını giriniz (gram cinsinden):");
+        string yemInput = Console.ReadLine();
+
+        // Yem miktarının string'den double'a dönüştürülmesi
+        double yemMiktari;
+
+        // Yem miktarını doğru bir sayıya dönüştürme kontrolü
+        if (double.TryParse(yemInput, out yemMiktari))
+        {
+            // Yem miktarını ekrana yazdırıyoruz
+            Console.WriteLine($"{petname}'in yem miktarı: {yemMiktari} birim");
+
+            // Yem miktarını kontrol etme(gram cinsinden)
+            if (yemMiktari <= 0)
+            {
+                Console.WriteLine($"{petname} için yem bitti! Lütfen yeni yem alınız.");
+                // Yem bittiğinde beep sesi
+                Console.Beep(500, 500); // 500 Hz frekansında 500 ms süreyle beep sesi
+            }
+            else if (yemMiktari < 400)
+            {
+                Console.WriteLine($"{petname} için yem azalmış, dikkat etmelisiniz!");
+                // Az yem olduğunda beep sesi
+                Console.Beep(700, 500); // 700 Hz frekansında 500 ms süreyle beep sesi
+            }
+            else
+            {
+                Console.WriteLine($"{petname} için yeterli yem mevcut.");
+            }
+        }
+        else
+        {
+            // Eğer kullanıcı geçerli bir yem miktarı girmezse
+            Console.WriteLine("Geçersiz bir yem miktarı girdiniz. Lütfen geçerli bir sayı girin.");
+        }
+
+        // Su miktarını ekleyelim
+        Console.WriteLine($"{petname}'in su miktarını giriniz (mililitre cinsinden):");
+        string suInput = Console.ReadLine();
+
+        // Su miktarının string'den double'a dönüştürülmesi
+        double suMiktari;
+
+        // Su miktarını doğru bir sayıya dönüştürme kontrolü
+        if (double.TryParse(suInput, out suMiktari))
+        {
+            // Su miktarını ekrana yazdırıyoruz
+            Console.WriteLine($"{petname}'in su miktarı: {suMiktari} birim");
+
+            // Su miktarını kontrol etme
+            if (suMiktari <= 0)
+            {
+                Console.WriteLine($"{petname} için su bitti! Lütfen yeni su alınız.");
+                // Su bittiğinde beep sesi
+                Console.Beep(400, 500); // 400 Hz frekansında 500 ms süreyle beep sesi
+            }
+            else if (suMiktari < 500)
+            {
+                Console.WriteLine($"{petname} için su azalmış, dikkat etmelisiniz!");
+                // Az su olduğunda beep sesi
+                Console.Beep(600, 500); // 600 Hz frekansında 500 ms süreyle beep sesi
+            }
+            else
+            {
+                Console.WriteLine($"{petname} için yeterli su mevcut.");
+            }
+        }
+        else
+        {
+            // Eğer kullanıcı geçerli bir su miktarı girmezse
+            Console.WriteLine("Geçersiz bir su miktarı girdiniz. Lütfen geçerli bir sayı girin.");
+        }
+    }
+}
+
